@@ -1,11 +1,10 @@
-
 Feature: DemoQA - Elements page
   Background:
     Given I am on the "Home" page
     And   I click "Elements"
     Then  I am on the "Elements" page
 
-  @run
+
   Scenario: Text Box
     When I click "Text Box option"
     And  I set "Full Name field" to "Donald Biden"
@@ -16,6 +15,7 @@ Feature: DemoQA - Elements page
     Then I see "Text Box results" with the following data:
       | Name         | Email                  | Current Address                                     | Permanent Address                    |
       | Donald Biden | example@testdevlab.com | Liljerum Grenadjärtorpet 24, Undrom, 880 10, Sweden | Djursbo 70, Landeryd, 310 82, Sweden |
+
 
   Scenario: Check Box
     When I click "Check Box option"
