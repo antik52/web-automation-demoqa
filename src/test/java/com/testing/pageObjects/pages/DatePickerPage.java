@@ -10,9 +10,9 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/date-picker")
 public class DatePickerPage extends WidgetsPage{
   // Locators ----------------------------------------------------------------------------------------------------------
-  public static By DATE_PICKER_TITLE;
-  public static By SELECT_DATE;
-  public static By SELECT_DATE_AND_TIME;
+  public static By DATE_PICKER_TITLE = text("Date Picker");
+  public static By SELECT_DATE = css("input[id='datePickerMonthYearInput']");
+  public static By SELECT_DATE_AND_TIME = css("input[id='dateAndTimePickerInput']");
   public static By MONTH_ALTERNATIVE_PICKER = css("[class*='react-datepicker__month-dropdown']");
   // Public methods ----------------------------------------------------------------------------------------------------
   public void waitForPageToLoad() {
@@ -54,7 +54,7 @@ public class DatePickerPage extends WidgetsPage{
     for (Map<String, String> map : dataToMap(data)) {
       for (String key : map.keySet()) {
         if(snakify(key).equals("VALUE") && getElement(SELECT_DATE).getValue().equals(map.get(key))) return true;
-      } 
+      }
     }
     return false;
   }
@@ -63,7 +63,7 @@ public class DatePickerPage extends WidgetsPage{
     for (Map<String, String> map : dataToMap(data)) {
       for (String key : map.keySet()) {
         if(snakify(key).equals("VALUE") && getElement(SELECT_DATE_AND_TIME).getValue().equals(map.get(key))) return true;
-      } 
+      }
     }
     return false;
   }

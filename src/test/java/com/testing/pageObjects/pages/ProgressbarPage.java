@@ -10,9 +10,9 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/progress-bar")
 public class ProgressbarPage extends WidgetsPage{
   // Locators ----------------------------------------------------------------------------------------------------------
-  public static By PROGRESS_BAR_TITLE;
-  public static By START_STOP_BUTTON;
-  public static By PROGRESS_BAR;
+  public static By PROGRESS_BAR_TITLE = text("Progress Bar");
+  public static By START_STOP_BUTTON = css("button[id='startStopButton']");
+  public static By PROGRESS_BAR = css("div[role='progressbar']");
   // Public methods ----------------------------------------------------------------------------------------------------
   public void waitForPageToLoad() {
     getElement(PROGRESS_BAR_TITLE).waitUntilPresent();
@@ -29,7 +29,11 @@ public class ProgressbarPage extends WidgetsPage{
         int currentBarValue = 0;
 
         // TODO: Implement a logic that would stop the progress bar when the required value is reached
-        currentBarValue = Integer.valueOf(getElement(PROGRESS_BAR).getAttribute("aria-valuenow"));
+        while(expectedValue!=currentBarValue) {
+          currentBarValue = Integer.valueOf(getElement(PROGRESS_BAR).getAttribute("aria-valuenow"));
+        }
+        getElement(START_STOP_BUTTON).click();
+
 
         break;
       default:
@@ -41,7 +45,7 @@ public class ProgressbarPage extends WidgetsPage{
     for (Map<String, String> map : dataToMap(data)) {
       for (String key : map.keySet()) {
         if(snakify(key).equals("VALUE") && getElement(PROGRESS_BAR).getAttribute("aria-valuenow").equals(map.get(key))) return true;
-      } 
+      }
     }
     return false;
   }

@@ -40,7 +40,7 @@ Feature: DemoQA - Elements page
     Then "Selected result" should contain "Impressive"
     And  "No button" should be "disabled"
 
-    @run
+
   Scenario: Web Tables
     When I click "Web Tables option"
     And  I click "Add button"
@@ -56,7 +56,7 @@ Feature: DemoQA - Elements page
       | First name | Last name | Age | Email                  | Salary | Department |
       | Joe        | Trump     | 53  | example@testdevlab.com | 10000  | Security   |
 
-  @run
+
   Scenario: Buttons
     When I click "Buttons option"
     And  I double click "Double click me button"
